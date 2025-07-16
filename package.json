@@ -1,0 +1,27 @@
+{
+  "name": "20250610-findy-css",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "marp --html --theme theme.css --allow-local-files --bespoke.osc=false --watch --server .",
+    "buid:pdf": "marp index.md --pdf --theme ./theme/style.css --allow-local-files .",
+    "buid:html": "marp index.md --html --theme ./theme/style.css --bespoke.osc=false --allow-local-files .",
+    "format": "prettier --write \"**/*.{md,html,css,js}\"",
+    "format:md": "prettier --write \"**/*.md\"",
+    "format:html": "prettier --write \"**/*.html\"",
+    "format:css": "prettier --write \"**/*.css\"",
+    "format:js": "prettier --write \"**/*.js\"",
+    "lint:text": "textlint \"**/*.md\""
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4.1.2",
+    "prettier": "^3.5.3",
+    "textlint": "^14.7.2",
+    "textlint-rule-preset-ja-spacing": "^2.4.3",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
