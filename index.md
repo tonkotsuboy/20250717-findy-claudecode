@@ -3,8 +3,6 @@ marp: true
 theme: kano
 ---
 
-<script src="https://cdn.jsdelivr.net/npm/baseline-status@1/baseline-status.min.js" type="module"></script>
-
 ![bg](images/cover.png)
 
 ---
@@ -15,15 +13,11 @@ _class: message
 
 # 鹿野 壮
 
-Claude Codeでもっと楽に開発する
+Claude Codeにタスク丸投げおじさん
 
 ![w:300](images/twitter.png)
 
 @tonkotsuboy_com
-
----
-
-![bg](images/matsueri_profile.png)
 
 ---
 
@@ -224,18 +218,7 @@ _class: external-demo
 _class: title
 -->
 
-
-# Puppeteer MCP
-
----
-
-<!--
-_class: title
--->
-
-# Puppeteer MCP
-
-MCPを活用した自動化ツール
+# Puppeteer MCPでスクショを撮って<br>PRに貼り付ける
 
 ---
 
@@ -243,43 +226,36 @@ MCPを活用した自動化ツール
 _class: description
 -->
 
-# Puppeteer MCP実用例
+# MCPとPuppeteer
 
-<div class="left">
+- MCP
+  - Model Context Protocol（MCP）はClaude Codeを外部システムと連携させる仕組み
+- Puppeteer
+  - ブラウザ操作の自動化
+  - スクリーンショット取得
 
-## GitHubスクリーンショット自動化
-
-```javascript
-// MCP作成例
-const screenshot = await page.screenshot({
-  path: 'github-issue.png',
-  fullPage: true
-});
-
-// GitHub APIでアップロード
-await uploadToGitHub(screenshot, {
-  repo: 'my-project',
-  issue: 123,
-  comment: 'スクリーンショット追加'
-});
-```
-
-</div>
-
-<div class="right">
-
-## MCP活用のメリット
-
-- ブラウザ操作の自動化
-- Claude CodeからWebページを操作
-- スクリーンショット取得
-- フォーム入力の自動化
-- データ収集の効率化
-
-Claude Code MCP:
 https://docs.anthropic.com/ja/docs/claude-code/mcp
 
-</div>
+---
+
+# 実例:GitHubスクリーンショット自動化
+
+- AIエージェント全盛期の現代、大量のPRが作られるがレビューが大変
+- コードの差分だけを追うよりも、スクリーンショットをベースに対話したほうが、レビュワー・レビューイともにわかりやすい
+- Puppeteer MCPを使って自動化した
+
+<div class="annotation-lang">~/.claude.json</div>
+
+```markdown
+"mcpServers": {
+  "puppeteer": {
+    "command": "npx",
+    "args": [
+      "@modelcontextprotocol/server-puppeteer"
+    ]
+  }
+}
+```
 
 ---
 
@@ -299,7 +275,19 @@ _class: title
 
 # Kiro連携
 
-要件・設計・実装計画の対話的作成
+---
+
+<!--
+_class: title
+-->
+
+# Kiroとは
+
+- 2025/07/15にAmazonがリリースしたIDE
+- 要件・設計・実装計画の対話形式で作成できる
+- 実装の実行もできるが、Claude Codeに比べると遅い
+
+https://kiro.dev/blog/introducing-kiro/
 
 ---
 
@@ -307,41 +295,13 @@ _class: title
 _class: description
 -->
 
-# Kiro連携実用例
+# 実例: Kiroで仕様を作成し、Claude Codeで実装する
 
-<div class="left">
+- Kiroは対話形式で詳細な要件書・設計書を作れるが、実装速度が遅い
+- Claude Codeは爆速開発ができるが、正確な指示出しが難しい
+- 2つの長所を組み合わせることで、質と速度の両取りができた
 
-## 役割分担ワークフロー
-
-**Kiro AIの役割:**
-
-- 要件定義の対話的作成
-- 設計書の詳細化
-- 実装計画の立案
-- タスクの分解・整理
-
-**Claude Codeの役割:**
-
-- 設計に基づく高速実装
-- テストコードの作成
-- デバッグとリファクタリング
-
-</div>
-
-<div class="right">
-
-## 連携の流れ
-
-1. **Kiro**: 要件をヒアリング
-2. **Kiro**: 設計を詳細化
-3. **Kiro**: 実装タスクを分解
-4. **Claude Code**: 設計を読み込み
-5. **Claude Code**: 効率的に実装
-
-参考記事:
 https://zenn.dev/ubie_dev/articles/kiro-claude-code
-
-</div>
 
 ---
 
