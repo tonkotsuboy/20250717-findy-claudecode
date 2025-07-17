@@ -39,9 +39,7 @@ Claude Codeにタスク丸投げおじさん
 _class: title
 -->
 
-# Hooks
-
-タスク実行前後の自動化処理
+# Hooksでタスク実行前後の<br>任意の処理をする
 
 ---
 
@@ -90,8 +88,7 @@ https://docs.anthropic.com/ja/docs/claude-code/hooks
 _class: external-demo
 -->
 
-<video controls>
-<source src="demo/demo-placeholder.mp4" type="video/mp4">
+<video width="100%" controls src="./demo/hooks_voice.mp4">
 </video>
 
 ---
@@ -100,9 +97,7 @@ _class: external-demo
 _class: title
 -->
 
-# Aqua Voice連携
-
-高品質音声入力による効率化
+# Aqua Voiceを使って<br>高品質な音声入力で命令する
 
 ---
 
@@ -139,8 +134,7 @@ https://withaqua.com/
 _class: external-demo
 -->
 
-<video controls>
-<source src="demo/demo-placeholder.mp4" type="video/mp4">
+<video width="80%" controls src="./demo/aqua-voice.mov">
 </video>
 
 ---
@@ -149,9 +143,7 @@ _class: external-demo
 _class: title
 -->
 
-# カスタムスラッシュコマンド
-
-事前登録処理の素早い実行
+# カスタムスラッシュコマンドで<br>定型処理を素早く実行する
 
 ---
 
@@ -186,7 +178,7 @@ https://docs.anthropic.com/ja/docs/claude-code/slash-commands
 
 # 実例:PR作成の自動化
 
-毎回やっているフォーマットとPR作成処理をカスタムスラッシュコマンド化した
+毎回やっているフォーマットとPR作成処理をカスタムスラッシュコマンド化
 
 <div class="annotation-lang">~/.claude/commands/create-pr.md</div>
 
@@ -208,8 +200,7 @@ prettierをかけたあと、適切な粒度でコミットし、PRを作って
 _class: external-demo
 -->
 
-<video controls>
-<source src="demo/demo-placeholder.mp4" type="video/mp4">
+<video width="100%" controls src="./demo/custom-slash.mp4">
 </video>
 
 ---
@@ -218,7 +209,7 @@ _class: external-demo
 _class: title
 -->
 
-# Puppeteer MCPでスクショを撮って<br>PRに貼り付ける
+# MCPの活用
 
 ---
 
@@ -226,46 +217,40 @@ _class: title
 _class: description
 -->
 
-# MCPとPuppeteer
+# MCPとは
 
-- MCP
-  - Model Context Protocol（MCP）はClaude Codeを外部システムと連携させる仕組み
-- Puppeteer
-  - ブラウザ操作の自動化
-  - スクリーンショット取得
+- Model Context Protocol（MCP）はClaude Codeを外部システムと連携させる仕組み
+- よく使っているMCP
+  - Puppeteer: ブラウザ操作の自動化
+  - Figma: デザインファイルの取得
+  - o3-search-mcp: Claude Codeが直接o3と相談する
 
 https://docs.anthropic.com/ja/docs/claude-code/mcp
 
 ---
 
-# 実例:GitHubスクリーンショット自動化
+# 自作のMCPも作れる
 
-- AIエージェント全盛期の現代、大量のPRが作られるがレビューが大変
-- コードの差分だけを追うよりも、スクリーンショットをベースに対話したほうが、レビュワー・レビューイともにわかりやすい
-- Puppeteer MCPを使って自動化した
+- Ubie製MCP
+  - Ubie社内のデザインシステムのMCPサーバー化
+  - Google検索MCP
+    - https://github.com/yukukotani/mcp-gemini-google-search
 
-<div class="annotation-lang">~/.claude.json</div>
-
-```markdown
-"mcpServers": {
-  "puppeteer": {
-    "command": "npx",
-    "args": [
-      "@modelcontextprotocol/server-puppeteer"
-    ]
-  }
-}
-```
+https://docs.anthropic.com/ja/docs/claude-code/mcp
 
 ---
 
-<!--
-_class: external-demo
--->
+# 実例: UltraThink + o3 MCP
 
-<video controls>
-<source src="demo/demo-placeholder.mp4" type="video/mp4">
-</video>
+- Claude Codeの拡張思考モードUltraThinkと、o3 MCPを使って課題を深く追求してもらう
+
+例: 「本リポジトリのパフォーマンス改善のためにできることは何？ o3と相談しながら深く考えて」と尋ねる
+
+---
+
+# 実例: UltraThink + o3 MCP
+
+![w:900](images/m3.png)
 
 ---
 
@@ -273,21 +258,40 @@ _class: external-demo
 _class: title
 -->
 
-# Kiro連携
+# 詳細な仕様をKiroで作らせて、<br>Claude Codeで爆速実装
 
 ---
-
-<!--
-_class: title
--->
 
 # Kiroとは
 
 - 2025/07/15にAmazonがリリースしたIDE
 - 要件・設計・実装計画の対話形式で作成できる
-- 実装の実行もできるが、Claude Codeに比べると遅い
 
 https://kiro.dev/blog/introducing-kiro/
+
+---
+
+# 対話形式で要件・設計・実装計画を対話形式で作成
+
+![w:700](images/kiro-1.png)
+
+---
+
+![bg](images/kiro-2.png)
+
+---
+
+<!--
+_class: message
+-->
+
+# 実装もしてくれるが、遅かった・・・
+
+---
+
+# 速度に耐えられない弊社、Claude Codeに丸投げを思いつく
+
+![w:800](images/kiro-3.png)
 
 ---
 
@@ -295,11 +299,10 @@ https://kiro.dev/blog/introducing-kiro/
 _class: description
 -->
 
-# 実例: Kiroで仕様を作成し、Claude Codeで実装する
+# 実例: Kiroの設計書をClaude Codeに丸投げ
 
-- Kiroは対話形式で詳細な要件書・設計書を作れるが、実装速度が遅い
-- Claude Codeは爆速開発ができるが、正確な指示出しが難しい
-- 2つの長所を組み合わせることで、質と速度の両取りができた
+- task.mdなどの仕様書をClaude Codeに投げる
+- Kiroの設計力 × Claude Codeの爆速開発力により、質と速度の両取りができた
 
 https://zenn.dev/ubie_dev/articles/kiro-claude-code
 
@@ -309,8 +312,7 @@ https://zenn.dev/ubie_dev/articles/kiro-claude-code
 _class: external-demo
 -->
 
-<video controls>
-<source src="demo/demo-placeholder.mp4" type="video/mp4">
+<video width="80%" controls src="./demo/kiro.mp4">
 </video>
 
 ---
@@ -329,4 +331,4 @@ Claude Codeでもっと楽に開発しましょう！
 _class: finish
 -->
 
-![w:600](images/finish.png)
+![bg](images/finish.png)
