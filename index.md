@@ -116,37 +116,28 @@ _class: title
 _class: description
 -->
 
-# Aqua Voice実用例
+# Aqua Voiceとは
 
-<div class="left">
+- 高精度な音声認識とリアルタイム処理により、自然な日本語の文字起こしができる
+- 言い間違いや「あー、うー」なども補正してくれる
+
+https://withaqua.com/
+
+---
+
+# 実例:音声でタスク実行
+
+- Claude Codeに音声で指示を出す
+- 文字を長々打つよりもラク
+- オフィスでやるとちょっと恥ずかしい
+
+<div class="annotation-lang">音声入力例</div>
 
 ```
-「Claude Codeで新しい機能を追加して。
-ユーザーのプロフィール編集画面を作成。
+「ユーザーのプロフィール編集画面を作成して。
 フォームバリデーションも含めて。
 テストも書いて。」
 ```
-
-リアルタイム音声認識
-→ Claude Codeに送信
-→ タスク実行
-
-</div>
-
-<div class="right">
-
-## 特徴
-
-- 高精度な音声認識
-- リアルタイム処理
-- 自然な日本語理解
-- 複雑な指示にも対応
-- ハンズフリー操作
-
-Aqua Voice:
-https://withaqua.com/
-
-</div>
 
 ---
 
