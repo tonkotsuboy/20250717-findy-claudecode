@@ -165,41 +165,48 @@ _class: title
 _class: description
 -->
 
-# カスタムコマンド実用例
+# スラッシュコマンドとは
 
-<div class="left">
-
-## PR作成の自動化
-
-```markdown
-# /create-pr
-
-現在のブランチの変更をPRとして作成します。
-
-1. 変更内容を確認
-2. コミットメッセージを生成
-3. GitHubでPR作成
-4. レビュアーを自動アサイン
-```
-
-`/create-pr` → 自動でPR作成完了
-
-</div>
-
-<div class="right">
-
-## その他の活用例
-
-- `/separate-commits` - コミット分離
-- `/fix-tests` - テスト修正
-- `/update-docs` - ドキュメント更新
-- `/deploy` - デプロイ実行
-- `/cleanup` - コード整理
-
-Claude Codeスラッシュコマンド:
+- あらかじめ登録した処理を実行できる
+- 毎回長いプロンプトを書く必要がない
+- 組み込みスラッシュコマンド
+  - `/doctor` claude codeのバグをチェック
+  - `/review` コードレビューをリクエスト
 https://docs.anthropic.com/ja/docs/claude-code/slash-commands
 
-</div>
+---
+
+# カスタムスラッシュコマンドとは
+
+- ユーザーが独自に登録した処理を実行できる
+- 毎回命令している長いプロンプトがあればカスタムスラッシュコマンドに登録しておく方が便利
+- .claude/commands/コマンド名.mdに処理を記述
+- スコープを設定できる
+  - グローバルで使う
+  - プロジェクトで共有する
+  - プロジェクトで自分だけが使う
+
+https://docs.anthropic.com/ja/docs/claude-code/slash-commands
+
+---
+
+# 実例:PR作成の自動化
+
+毎回やっているフォーマットとPR作成処理をカスタムスラッシュコマンド化した
+
+<div class="annotation-lang">~/.claude/commands/create-pr.md</div>
+
+```markdown
+## Description
+このコマンドは以下の作業を自動で実行します：
+1. `npm run format` でPrettierフォーマットを実行
+2. 変更内容を適切な粒度でコミットに分割
+3. GitHub PRを作成
+
+## Implementation
+prettierをかけたあと、適切な粒度でコミットし、PRを作って
+**使用例:** `/create-pr` → 自動でPR作成完了
+```
 
 ---
 
@@ -210,6 +217,15 @@ _class: external-demo
 <video controls>
 <source src="demo/demo-placeholder.mp4" type="video/mp4">
 </video>
+
+---
+
+<!--
+_class: title
+-->
+
+
+# Puppeteer MCP
 
 ---
 
