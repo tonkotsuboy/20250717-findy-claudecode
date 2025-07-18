@@ -1,6 +1,21 @@
 ---
 marp: true
 theme: kano
+title: 実務で使っているClaude Codeの活用事例集 - Claude Code Meetup
+description: Hooks、カスタムスラッシュコマンド、MCP、Aqua Voice連携、Kiro連携など、Claude Codeをより効率的に使うための実践的なテクニックを紹介します。
+author: 鹿野 壮 (@tonkotsuboy_com)
+keywords: Claude Code, AI, 開発効率化, Hooks, MCP, Aqua Voice, Kiro
+url: https://tonkotsuboy.github.io/20250717-findy-claudecode
+image: https://tonkotsuboy.github.io/20250717-findy-claudecode/images/cover.png
+paginate: true
+_head: |
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="実務で使っているClaude Codeの活用事例集 - Claude Code Meetup">
+  <meta name="twitter:description" content="Hooks、カスタムスラッシュコマンド、MCP、Aqua Voice連携、Kiro連携など、Claude Codeをより効率的に使うための実践的なテクニックを紹介します。">
+  <meta name="twitter:image" content="https://tonkotsuboy.github.io/20250717-findy-claudecode/images/cover.png">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:type" content="image/png">
 ---
 
 ![bg](images/cover.png)
@@ -25,11 +40,11 @@ Claude Codeにタスク丸投げおじさん
 
 <div class="text-note">
 
-1. Hooks - タスク前後の自動化
-2. Aqua Voice連携 - 高品質音声入力
-3. カスタムスラッシュコマンド - 事前登録処理
-4. Puppeteer MCP - GitHubスクリーンショット自動化
-5. Kiro連携 - 要件・設計・実装の役割分担
+1. Hooks
+2. カスタムスラッシュコマンド
+3. MCP
+4. Aqua Voice連携
+5. Kiro連携
 
 </div>
 
@@ -37,6 +52,7 @@ Claude Codeにタスク丸投げおじさん
 
 <!--
 _class: title
+_header: 01
 -->
 
 # Hooksでタスク実行前後の<br>任意の処理をする
@@ -88,59 +104,14 @@ https://docs.anthropic.com/ja/docs/claude-code/hooks
 _class: external-demo
 -->
 
-<video width="100%" controls src="./demo/hooks_voice.mp4">
+<video width="900" height="800" controls loop preload="auto" src="./demo/hooks_voice.mp4">
 </video>
 
 ---
 
 <!--
 _class: title
--->
-
-# Aqua Voiceを使って<br>高品質な音声入力で命令する
-
----
-
-<!--
-_class: description
--->
-
-# Aqua Voiceとは
-
-- 高精度な音声認識とリアルタイム処理により、自然な日本語の文字起こしができる
-- 言い間違いや「あー、うー」なども補正してくれる
-
-https://withaqua.com/
-
----
-
-# 実例:音声でタスク実行
-
-- Claude Codeに音声で指示を出す
-- 文字を長々打つよりもラク
-- オフィスでやるとちょっと恥ずかしい
-
-<div class="annotation-lang">音声入力例</div>
-
-```
-「ユーザーのプロフィール編集画面を作成して。
-フォームバリデーションも含めて。
-テストも書いて。」
-```
-
----
-
-<!--
-_class: external-demo
--->
-
-<video width="80%" controls src="./demo/aqua-voice.mov">
-</video>
-
----
-
-<!--
-_class: title
+_header: 02
 -->
 
 # カスタムスラッシュコマンドで<br>定型処理を素早く実行する
@@ -165,12 +136,10 @@ https://docs.anthropic.com/ja/docs/claude-code/slash-commands
 # カスタムスラッシュコマンドとは
 
 - ユーザーが独自に登録した処理を実行できる
-- 毎回命令している長いプロンプトがあればカスタムスラッシュコマンドに登録しておく方が便利
+- 毎回命令している長いプロンプトは登録するのが便利
 - .claude/commands/コマンド名.mdに処理を記述
 - スコープを設定できる
-  - グローバルで使う
-  - プロジェクトで共有する
-  - プロジェクトで自分だけが使う
+  - グローバル・プロジェクト・プロジェクトで自分だけ使う等
 
 https://docs.anthropic.com/ja/docs/claude-code/slash-commands
 
@@ -200,16 +169,17 @@ prettierをかけたあと、適切な粒度でコミットし、PRを作って
 _class: external-demo
 -->
 
-<video width="100%" controls src="./demo/custom-slash.mp4">
+<video width="1300" height="1200" controls loop preload="auto" src="./demo/custom-slash.mp4">
 </video>
 
 ---
 
 <!--
+_header: 03
 _class: title
 -->
 
-# MCPの活用
+# 私が使っているMCP実例
 
 ---
 
@@ -219,11 +189,12 @@ _class: description
 
 # MCPとは
 
-- Model Context Protocol（MCP）はClaude Codeを外部システムと連携させる仕組み
+- Claude Codeを外部システムと連携させる仕組み
 - よく使っているMCP
   - Puppeteer: ブラウザ操作の自動化
   - Figma: デザインファイルの取得
   - o3-search-mcp: Claude Codeが直接o3と相談する
+    - https://zenn.dev/yoshiko/articles/claude-code-with-o3
 
 https://docs.anthropic.com/ja/docs/claude-code/mcp
 
@@ -233,10 +204,11 @@ https://docs.anthropic.com/ja/docs/claude-code/mcp
 
 - Ubie製MCP
   - Ubie社内のデザインシステムのMCPサーバー化
+    - https://zenn.dev/ubie_dev/articles/f927aaff02d618
   - Google検索MCP
     - https://github.com/yukukotani/mcp-gemini-google-search
-
-https://docs.anthropic.com/ja/docs/claude-code/mcp
+- 個人的に最近作ってるもの
+  - puppeteerでGitHubのPRに画像アップロード
 
 ---
 
@@ -248,13 +220,51 @@ https://docs.anthropic.com/ja/docs/claude-code/mcp
 
 ---
 
-# 実例: UltraThink + o3 MCP
-
-![w:900](images/m3.png)
+![bg](images/m3.png)
 
 ---
 
 <!--
+_header: 04
+_class: title
+-->
+
+# Aqua Voiceを使って<br>高品質な音声入力で命令する
+
+---
+
+<!--
+_class: description
+-->
+
+# Aqua Voiceとは
+
+- 高精度な音声認識とリアルタイム処理により、自然な日本語の文字起こしができる
+- 言い間違いや「あー、うー」なども補正してくれる
+
+https://withaqua.com/
+
+---
+
+# 実例:音声でタスク実行
+
+- Claude Codeに音声で指示を出す
+- 文字を長々打つよりもラク
+- オフィスでやるとちょっと恥ずかしい
+
+---
+
+<!--
+_class: external-demo
+-->
+
+<video width="80%" controls loop preload="auto" src="./demo/aqua-voice.mov">
+</video>
+
+---
+
+<!--
+_header: 05
 _class: title
 -->
 
@@ -312,18 +322,8 @@ https://zenn.dev/ubie_dev/articles/kiro-claude-code
 _class: external-demo
 -->
 
-<video width="80%" controls src="./demo/kiro.mp4">
+<video width="80%" controls loop preload="auto" src="./demo/kiro.mp4">
 </video>
-
----
-
-<!--
-_class: message
--->
-
-# ご清聴ありがとうございました
-
-Claude Codeでもっと楽に開発しましょう！
 
 ---
 
@@ -332,3 +332,11 @@ _class: finish
 -->
 
 ![bg](images/finish.png)
+
+---
+
+# Ubieで一緒に働きましょう！
+
+![w:800](images/ubie.png)
+
+https://recruit.ubie.life/

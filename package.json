@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "marp --html --theme theme.css --allow-local-files --bespoke.osc=false --watch --server .",
+    "dev": "marp index.md --html --theme ./theme/style.css --allow-local-files --bespoke.osc=true --watch --server .",
     "buid:pdf": "marp index.md --pdf --theme ./theme/style.css --allow-local-files .",
-    "buid:html": "marp index.md --html --theme ./theme/style.css --bespoke.osc=false --allow-local-files .",
+    "buid:html": "marp index.md --html --theme ./theme/style.css --bespoke.osc=true --allow-local-files .",
     "format": "prettier --write \"**/*.{md,html,css,js}\"",
     "format:md": "prettier --write \"**/*.md\"",
     "format:html": "prettier --write \"**/*.html\"",

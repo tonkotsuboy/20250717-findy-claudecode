@@ -318,6 +318,7 @@ section.video {
   place-content: center;
 }
 
+
 section.message > h1 {
   font-size: var(--title-size);
   line-height: 1.7;
@@ -547,6 +548,22 @@ section.detail code {
 
 section p:has(img) {
   margin-bottom: 0;
+}
+
+/* 動画コントローラーを常に表示 */
+video::-webkit-media-controls {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+video::-webkit-media-controls-panel {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+video {
+  /* コントローラーを常に表示するため、hoverなしでも表示 */
+  cursor: pointer;
 }
 
 

@@ -1,1 +1,10 @@
 node_modules
+
+# Generated HTML files (except index.html for GitHub Pages)
+*.html
+!index.html
+
+# Environment files
+.env*
+
+.idea
