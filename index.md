@@ -327,16 +327,16 @@ _class: external-demo
 
 ---
 
-<!--
-_class: finish
--->
-
-![bg](images/finish.png)
-
----
-
 # Ubieで一緒に働きましょう！
 
 ![w:800](images/ubie.png)
 
 https://recruit.ubie.life/
+
+---
+
+<!--
+_class: finish
+-->
+
+![bg](images/finish.png)
